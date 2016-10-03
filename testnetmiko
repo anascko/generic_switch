@@ -1,0 +1,11 @@
+#!/usr/bin/python
+dell = { 'device_type': 'dell_force10', 'ip': '172.16.42.12', 'username': 'openstack', 'password': 'OpenstackSecret', 'secret': 'EnableSecret'}
+import netmiko
+net_conn = netmiko.ConnectHandler(**dell)
+net_conn.enable()
+net_conn.check_enable_mode()
+out=net_conn.send_command("sh int status")
+print out
+
+
+
